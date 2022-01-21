@@ -4,9 +4,12 @@
 
 import sys
 from collections import namedtuple
+from json import load as json_load
+from typing import Optional
 
 import base64
 import click
+import urllib.request
 
 from bitcoin.core import Hash160
 from bitcoin.core.key import CPubKey
@@ -137,6 +140,72 @@ def pretty_print_addresses(addresses: Addresses):
     print('- Litecoin P2WPKH:\t', addresses.litecoin_p2wpkh)
 
 
+def check_balance(address: str, fiat: str = 'usd') -> (Optional[float], Optional[float]):
+    """check_balance: Basic usage of bitlaps API
+    returns (float, float) eg Bitcoin amount (whole Bitcoin not Sats) and Fiat amount"""
+    # Using bitlaps https://developer.bitaps.com/blockchain which is free for 15 reqs in 5s currently
+    currency = 'btc'  # if address[0] in ('1', '3', 'b'):
+    if address[0].lower() == 'l':
+        currency = 'ltc'
+    if address[0] == '0':
+        currency = 'eth'
+
+    url = 'https://api.bitaps.com/{currency}/v1/blockchain/address/state/{address}'.format(currency=currency, address=address)
+
+    data = None
+    with urllib.request.urlopen(url) as wp:
+        try:
+            data = json_load(wp)
+        except:
+            print('Error reading bitlaps API')
+            return (None, None)
+
+    balance = 0
+    try:
+        balance = data['data']['balance']
+    except AttributeError:
+        print('Error balance not found')
+
+    if balance:
+        if currency == 'eth':
+            balance = balance * 0.000000000000000001
+        else:
+            # Bitcoin & Litecoin has 8 decimal places
+            balance = balance * 0.00000001
+
+    price_url = 'https://api.bitaps.com/market/v1/ticker/{currency}{fiat}'.format(currency=currency, fiat=fiat)
+
+    data = None
+    with urllib.request.urlopen(price_url) as wp:
+        try:
+            data = json_load(wp)
+        except:
+            print('Error reading bitlaps API')
+            return (None, None)
+
+    fiat_value = None
+    try:
+        fiat_value = balance * float(data['data']['last'])
+    except AttributeError:
+        print('Error last price not found')
+
+    return (balance, fiat_value)
+
+
+def pretty_print_addresses_with_balance(addresses: Addresses):
+    # TODO: Do this with a loop
+    balance, fiat = check_balance(addresses.bitcoin_p2pkh)
+    print('Addresses for Opendime:\t%s\t\t%f = $%f' % (addresses.bitcoin_p2pkh, balance, fiat))
+    balance, fiat = check_balance(addresses.bitcoin_p2wpkh)
+    print('- Bitcoin P2WPKH:\t%s\t%f = $%f' % (addresses.bitcoin_p2wpkh, balance, fiat))
+    balance, fiat = check_balance(addresses.ethereum)
+    print('- Ethereum:\t\t%s\t%f = $%f' % (addresses.ethereum, balance, fiat))
+    balance, fiat = check_balance(addresses.litecoin)
+    print('- Litecoin:\t\t%s\t\t%f = $%f' % (addresses.litecoin, balance, fiat))
+    balance, fiat = check_balance(addresses.litecoin_p2wpkh)
+    print('- Litecoin P2WPKH:\t%s\t%f = $%f' % (addresses.litecoin_p2wpkh, balance, fiat))
+
+
 def test_get_addresses(address, verifytxt, signature, message, p2wpkh_expected, ethereum_expected, litecoin_expected, litecoin_p2wpkh_expected):
     if verifytxt:
         verified_message = verify_textfile(address, verifytxt)
@@ -180,7 +249,8 @@ def tests():
 @click.option('--address', '-a', help='Bitcoin address. Required.')
 @click.option('--signature', '-s', help='Bitcoin signature (if verify.txt not used)')
 @click.option('--message', '-m', help='Bitcoin message (if verify.txt not used)')
-def main(verifytxt, address, signature, message):
+@click.option('--balance', '-b', help='Check balance', count=True)
+def main(verifytxt, address, signature, message, balance):
     # Run the sanity tests first
     tests()
 
@@ -198,7 +268,10 @@ def main(verifytxt, address, signature, message):
         sys.exit(1)
 
     addresses = get_addresses(verified_message)
-    pretty_print_addresses(addresses)
+    if balance:
+        pretty_print_addresses_with_balance(addresses)
+    else:
+        pretty_print_addresses(addresses)
 
 
 if __name__ == '__main__':
