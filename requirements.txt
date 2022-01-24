@@ -1,6 +1,6 @@
 click==8.0.3
 python-bitcoinlib==0.11.0
-eth-keys==0.3.3
+eth-keys==0.4.0
 pysha3==1.0.2
 litecoin-utils==0.5.4
 pycoin==0.91.20210515
