@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"encoding/base64"
@@ -14,11 +14,7 @@ import (
 	"github.com/timchurchard/opendime-utils/pkg"
 )
 
-func main() {
-	os.Exit(realMain(os.Stdout))
-}
-
-func realMain(out io.Writer) int { // TODO This func is super ugly, should refactor
+func CryptMain(out io.Writer) int { // TODO This func is super ugly, should refactor
 	const (
 		defaultEmpty    = ""
 		usageVerbose    = "Verbose mode"
@@ -153,7 +149,7 @@ func realMain(out io.Writer) int { // TODO This func is super ugly, should refac
 		if output {
 			fmt.Fprintf(out, "%s\n", base64.StdEncoding.EncodeToString(cipherText))
 		} else {
-			err = os.WriteFile(outputFn, cipherText, 0600)
+			err = os.WriteFile(outputFn, cipherText, 0o600)
 			if err != nil {
 				fmt.Fprintf(out, "Error writing output file: %s %v", outputFn, err)
 				return 1
@@ -196,7 +192,7 @@ func realMain(out io.Writer) int { // TODO This func is super ugly, should refac
 		if output {
 			fmt.Fprintf(out, "Decrypted message\n%s\n", plainText)
 		} else {
-			err = os.WriteFile(outputFn, plainText, 0600)
+			err = os.WriteFile(outputFn, plainText, 0o600)
 			if err != nil {
 				fmt.Fprintf(out, "Error writing output file: %s %v", outputFn, err)
 				return 1

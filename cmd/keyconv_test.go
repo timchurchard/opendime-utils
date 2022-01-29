@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bytes"
@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func Test_realMain(t *testing.T) {
+func Test_KeyconvMain(t *testing.T) {
 	const (
 		cliName                         = "keyconv"
 		bitcoinInvalid                  = "Error: WIF malformed/wrong length"
@@ -41,11 +41,11 @@ func Test_realMain(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			out := &bytes.Buffer{}
 
-			if got := realMain(out, tt.args.key); got != tt.want {
-				t.Errorf("realMain() = %v, want %v", got, tt.want)
+			if got := KeyconvMain(out, tt.args.key); got != tt.want {
+				t.Errorf("KeyconvMain() = %v, want %v", got, tt.want)
 			}
 			if gotOut := out.String(); gotOut != tt.wantOut {
-				t.Errorf("realMain() = %v, want %v", gotOut, tt.wantOut)
+				t.Errorf("KeyconvMain() = %v, want %v", gotOut, tt.wantOut)
 			}
 		})
 	}

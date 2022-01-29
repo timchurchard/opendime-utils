@@ -11,13 +11,6 @@ var LitecoinMainNetParams = chaincfg.Params{
 	Name:        "mainnet",
 	Net:         wire.MainNet,
 	DefaultPort: "9333",
-	DNSSeeds: []chaincfg.DNSSeed{
-		{"seed-a.litecoin.loshan.co.uk", true},
-		{"dnsseed.thrasher.io", true},
-		{"dnsseed.litecointools.com", false},
-		{"dnsseed.litecoinpool.org", false},
-		{"dnsseed.koin-project.com", false},
-	},
 
 	// Human-readable part for Bech32 encoded segwit addresses, as defined in
 	// BIP 173.
