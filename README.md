@@ -10,9 +10,7 @@ Also supports Litecoin Opendimes.
 
 ## Premise
 
-It should be possible to create multiple addresses associated to the single Bitcoin/Litecoin private key stored on the Opendime.
-
-A sealed Opendime can make a signature to prove it controls the private key. The public key can be recovered from a signature. Using the public key we are able to derive other addresses such as Bitcoin P2WPKH as well as altcoin addresses such as Litecoin and Ethereum.
+It is possible to recover the public key from a Bitcoin/Litecoin signature. And a sealed Opendime can make a signature to prove it controls the private key. Using the public key we are able to derive other addresses such as Bitcoin P2WPKH as well as altcoin addresses such as Litecoin and Ethereum.
 
 ## Install
 
@@ -24,18 +22,14 @@ go install github.com/timchurchard/opendime-utils/...@latest
 
 ## Usage
 
-First use sigtoaddr to derive other addresses from an Opendime signature or Opendime (OPENDIME/advanced/verify.txt) file.
+This utility provides three sub commands. sigtoaddr to derive addresses from a signature. keyconv to convert a single private key into other formats eg compressed/uncompressed and altcoin formats. crypt to encrypt/decrypt messages using a Bitcoin signature or private key.
 
-Use the optional --balance / -b option to show balance using [bitlaps.com](https://bitaps.com/) API.
+## Examples & Tips
 
-Once unsealed the keyconv can be used to convert the private key into formats used for Litecoin or Ethereum. Electrum can import the Bitcoin private key using prefix p2wpkh:<KEY>.
-
-The crypt utility can be used to encrypt a message or file for a Bitcoin address. And to decrypt those messages with the private key.
-
-## Tips!
+sigtoaddr for my tips opendime verify.txt
 
 ```shell
-$ ./cmd/sigtoaddr/sigtoaddr --verifytxt ./verify.txt_tips
+$ ./opendime-utils sigtoaddr -verifytxt ./verify.txt_tips
 Addresses for Opendime: 1Mmg2eycKHomhjAikEAVehHpCSHTREhLfR
 - Bitcoin P2PKH                  1Mmg2eycKHomhjAikEAVehHpCSHTREhLfR
 - Bitcoin P2PKH (Compressed)     129azYLPaG55Kb7z1TgvBbj6nRjYFcNMqE
@@ -45,3 +39,5 @@ Addresses for Opendime: 1Mmg2eycKHomhjAikEAVehHpCSHTREhLfR
 - Litecoin P2PKH (Compressed)    LLNYFkeDevK8aPp9BbgDTcnrze6pQc7D6s
 - Litecoin P2WPKH                ltc1qpjtaggfhsnhkcyg967k3jmsxtm5hzg72ymrkmy
 ```
+
+For an example of crypt see [crypt_demo.sh](crypt_demo.sh).
