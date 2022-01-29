@@ -17,7 +17,7 @@ It is possible to recover the public key from a Bitcoin/Litecoin signature. And 
 Install the latest from source using the `go install` command
 
 ```shell
-go install github.com/timchurchard/opendime-utils/...@latest
+go install github.com/timchurchard/opendime-utils
 ```
 
 ## Usage
