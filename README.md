@@ -40,4 +40,6 @@ Addresses for Opendime: 1Mmg2eycKHomhjAikEAVehHpCSHTREhLfR
 - Litecoin P2WPKH                ltc1qpjtaggfhsnhkcyg967k3jmsxtm5hzg72ymrkmy
 ```
 
-For an example of crypt see [crypt_demo.sh](crypt_demo.sh).
+For a full example of sigtoaddr and keyconv [here](sigtoaddr_keyconv_demo.sh)
+
+For an example of crypt see [crypt_demo.sh](crypt_demo.sh)
