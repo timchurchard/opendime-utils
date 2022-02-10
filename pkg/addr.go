@@ -9,6 +9,7 @@ import (
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
+// Addresses struct for GetAddresses response
 type Addresses struct {
 	Original                string
 	BitcoinP2PKH            string
@@ -22,6 +23,7 @@ type Addresses struct {
 	CompressedHex           string
 }
 
+// GetAddresses get addresses from a verified message (only public key is needed)
 func GetAddresses(message VerifiedMessage) (Addresses, error) {
 	publicKeyBytes, err := hex.DecodeString(message.PublicKeyHex)
 	if err != nil {

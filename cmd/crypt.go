@@ -14,6 +14,7 @@ import (
 	"github.com/timchurchard/opendime-utils/pkg"
 )
 
+// CryptMain entrypoint for the crypt command
 func CryptMain(out io.Writer) int { // TODO This func is super ugly, should refactor
 	const (
 		defaultEmpty    = ""
@@ -139,6 +140,10 @@ func CryptMain(out io.Writer) int { // TODO This func is super ugly, should refa
 			}
 
 			cipherText, err = ecies.Encrypt(publicKey, []byte(data))
+			if err != nil {
+				fmt.Fprintf(out, "Error encrypting data file: %s %v", inputFn, err)
+				return 1
+			}
 		}
 
 		if err != nil {

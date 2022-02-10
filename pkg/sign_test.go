@@ -159,12 +159,12 @@ func TestParseVerifyTxt(t *testing.T) {
 	)
 
 	btcFp, _ := ioutil.TempFile("", "pvt*")
-	btcFp.WriteString(verifyTxtBtc)
+	_, _ = btcFp.WriteString(verifyTxtBtc)
 	btcFp.Close()
 	defer os.Remove(btcFp.Name())
 
 	ltcFp, _ := ioutil.TempFile("", "pvt*")
-	ltcFp.WriteString(verifyTxtLtc)
+	_, _ = ltcFp.WriteString(verifyTxtLtc)
 	ltcFp.Close()
 	defer os.Remove(ltcFp.Name())
 
