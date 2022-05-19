@@ -14,6 +14,14 @@ It should be possible to create multiple addresses associated to the single Bitc
 
 A sealed Opendime can make a signature to prove it controls the private key. The public key can be recovered from a signature. Using the public key we are able to derive other addresses such as Bitcoin P2WPKH as well as altcoin addresses such as Litecoin and Ethereum.
 
+## Install
+
+Install the latest from source using the `go install` command
+
+```shell
+go install github.com/timchurchard/opendime-utils/...@latest
+```
+
 ## Usage
 
 First use sigtoaddr to derive other addresses from an Opendime signature or Opendime (OPENDIME/advanced/verify.txt) file.
