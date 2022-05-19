@@ -1,11 +1,9 @@
-package main
+package cmd
 
 import (
 	"flag"
 	"fmt"
 	"io"
-	"os"
-	"strings"
 
 	"github.com/timchurchard/opendime-utils/pkg"
 )
@@ -15,17 +13,7 @@ const (
 	prefixLitecoinHex = "b0"
 )
 
-func main() {
-	var key string
-
-	fmt.Printf("Private Key WIF: ")
-	fmt.Scanln(&key)
-	key = strings.TrimSpace(key)
-
-	os.Exit(realMain(os.Stdout, key))
-}
-
-func realMain(out io.Writer, key string) int {
+func KeyconvMain(out io.Writer, key string) int {
 	verbose := flag.Bool("v", false, "Verbose mode")
 	flag.Parse()
 

@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"errors"
@@ -17,11 +17,7 @@ const (
 	defaultSymbol   = "$"
 )
 
-func main() {
-	os.Exit(realMain(os.Stdout))
-}
-
-func realMain(out io.Writer) int {
+func SigtoaddrMain(out io.Writer) int {
 	const (
 		defaultEmpty   = ""
 		usageVerbose   = "Verbose mode"
@@ -219,7 +215,7 @@ func sanityTests() int {
 		}
 
 		addresses, err = pkg.GetAddresses(verifiedMessage)
-		if addresses != tt.addresses {
+		if err != nil || addresses != tt.addresses {
 			return 1
 		}
 	}
@@ -228,7 +224,7 @@ func sanityTests() int {
 }
 
 func prettyPrintAddresses(out io.Writer, addresses pkg.Addresses, balance bool) {
-	var prefixes = map[string]string{
+	prefixes := map[string]string{
 		"BitcoinP2PKH":            "Bitcoin P2PKH\t\t\t",
 		"BitcoinP2PKHCompressed":  "Bitcoin P2PKH (Compressed)\t",
 		"BitcoinP2WPKH":           "Bitcoin P2WPKH\t\t",

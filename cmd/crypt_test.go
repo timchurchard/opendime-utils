@@ -1,4 +1,4 @@
-package main
+package cmd
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"testing"
 )
 
-func Test_realMain(t *testing.T) {
+func Test_CryptMain(t *testing.T) {
 	const (
 		cliName         = "crypt"
 		validDecryptOut = "Decrypted message\nTest Message for crypt\n"
@@ -60,13 +60,13 @@ func Test_realMain(t *testing.T) {
 			os.Args = append([]string{cliName}, tt.args...)
 
 			out := &bytes.Buffer{}
-			if got := realMain(out); got != tt.want {
-				t.Errorf("realMain() = %v, want %v", got, tt.want)
+			if got := CryptMain(out); got != tt.want {
+				t.Errorf("CryptMain() = %v, want %v", got, tt.want)
 			}
 
 			gotOut := out.String()
 			if !strings.HasPrefix(gotOut, "Encrypted message for 133r6sCj") && gotOut != tt.wantOut {
-				t.Errorf("realMain() = %v, want %v", gotOut, tt.wantOut)
+				t.Errorf("CryptMain() = %v, want %v", gotOut, tt.wantOut)
 			}
 		})
 	}
