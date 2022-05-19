@@ -17,6 +17,7 @@ const (
 	defaultSymbol   = "$"
 )
 
+// SigtoaddrMain entrypoint for the sigtoaddr command
 func SigtoaddrMain(out io.Writer) int {
 	const (
 		defaultEmpty   = ""

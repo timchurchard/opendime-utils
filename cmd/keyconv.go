@@ -13,6 +13,7 @@ const (
 	prefixLitecoinHex = "b0"
 )
 
+// KeyconvMain entrypoint for the keyconv command
 func KeyconvMain(out io.Writer, key string) int {
 	verbose := flag.Bool("v", false, "Verbose mode")
 	flag.Parse()

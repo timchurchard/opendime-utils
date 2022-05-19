@@ -6,16 +6,18 @@ import (
 	"encoding/hex"
 	"errors"
 	"fmt"
-	"github.com/btcsuite/btcd/wire"
 	"os"
 	"regexp"
 	"strings"
 	"syscall"
 
+	"github.com/btcsuite/btcd/wire"
+
 	"github.com/btcsuite/btcd/btcec"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 )
 
+// VerifiedMessage struct holds response from ValidateSignature
 type VerifiedMessage struct {
 	Address      string
 	Signature    []byte
@@ -62,7 +64,7 @@ func VerifyMessage(address string, signature string, message string) (VerifiedMe
 	return VerifySignature(address, signatureBytes, []byte(message))
 }
 
-// VerifySignature
+// VerifySignature takes an address, signature and message and returns VerifiedMessage
 func VerifySignature(address string, signature []byte, message []byte) (VerifiedMessage, error) {
 	var buf bytes.Buffer
 
@@ -71,12 +73,12 @@ func VerifySignature(address string, signature []byte, message []byte) (Verified
 
 	btcMatch, _ := regexp.MatchString("^(1|3|bc1).", address)
 	if btcMatch { // todo: not sure if 3 addresses can sign? And litecoin has 3 addresses too?
-		wire.WriteVarBytes(&buf, 0, bitcoinSignatureHeader)
+		_ = wire.WriteVarBytes(&buf, 0, bitcoinSignatureHeader)
 	} else { // todo: handle other signature types that Bitcoin/Litecoin?
-		wire.WriteVarBytes(&buf, 0, litecoinSignatureHeader)
+		_ = wire.WriteVarBytes(&buf, 0, litecoinSignatureHeader)
 	}
 
-	wire.WriteVarBytes(&buf, 0, message)
+	_ = wire.WriteVarBytes(&buf, 0, message)
 	messageHash := chainhash.DoubleHashB(buf.Bytes())
 
 	publicKey, _, err := btcec.RecoverCompact(btcec.S256(), signature, messageHash)
