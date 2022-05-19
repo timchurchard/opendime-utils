@@ -1,10 +1,9 @@
 # golang stuff
-cmd/keyconv/keyconv
-cmd/crypt/crypt
-cmd/sigtoaddr/sigtoaddr
 .cover.out
 cover.html
 .idea
+crypt_demo.sh.*
+opendime-utils
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
