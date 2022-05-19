@@ -21,7 +21,7 @@ python3 -m pip install -U pip setuptools
 pip3 install -r requirements.txt
 ```
 
-First use sigtoaddr.py to derive other addresses from an opendime signature or opendime (OPENDIME/advanced/verify.txt) file. The following example shows creating address for my 1Mmg2 Opendime using its verify.txt.
+First use sigtoaddr.py to derive other addresses from an opendime signature or opendime (OPENDIME/advanced/verify.txt) file. The following example shows creating address for my 1Mmg2 Opendime using its verify.txt. Note the optional --balance -b option to show balance.
 
 ```bash
 python3 sigtoaddr.py --address 1Mmg2eycKHomhjAikEAVehHpCSHTREhLfR --verifytxt ./verify.txt_tips
