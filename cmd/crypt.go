@@ -15,7 +15,7 @@ import (
 )
 
 // CryptMain entrypoint for the crypt command
-func CryptMain(out io.Writer) int { // TODO This func is super ugly, should refactor
+func CryptMain(out io.Writer) int { // todo: This func is super ugly, should refactor
 	const (
 		defaultEmpty    = ""
 		usageVerbose    = "Verbose mode"
@@ -91,8 +91,8 @@ func CryptMain(out io.Writer) int { // TODO This func is super ugly, should refa
 
 	flag.Parse()
 
-	// todo terrible sleep because of flag.Parse not finished by the next if ??
-	time.Sleep(time.Millisecond * 500)
+	// note! terrible sleep because of flag.Parse not finished by the next if ??
+	time.Sleep(time.Millisecond)
 
 	if verifyTxtFn != "" {
 		address, signature, message, err = pkg.ParseVerifyTxt(verifyTxtFn)

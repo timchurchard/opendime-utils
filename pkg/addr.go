@@ -34,7 +34,7 @@ func GetAddresses(message VerifiedMessage) (Addresses, error) {
 		return Addresses{}, err
 	}
 
-	// todo: We'll assume these cannot error for a valid public key on the Secp256k1 curve
+	// todo: assuming these cannot error for a valid public key on the Secp256k1 curve ?!
 	pkHash := btcutil.Hash160(publicKey.SerializeUncompressed())
 	bitcoinP2PKH, _ := btcutil.NewAddressPubKeyHash(pkHash, &chaincfg.MainNetParams)
 
