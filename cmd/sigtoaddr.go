@@ -8,6 +8,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"time"
 
 	"github.com/timchurchard/opendime-utils/pkg"
 )
@@ -251,11 +252,14 @@ func prettyPrintAddresses(out io.Writer, addresses pkg.Addresses, balance bool) 
 		fmt.Fprintf(out, "- %s %s ", prefixes[fieldName], address)
 
 		if balance {
-			amount, value, err := pkg.CheckBalance(address, defaultCurrency)
+			amount, value, extra, err := pkg.CheckBalance(address, defaultCurrency)
 			if err != nil {
-				// todo: nothing?
+				// skip price/value print
 			} else {
-				fmt.Fprintf(out, "(%f = %s%f)", amount, defaultSymbol, value)
+				fmt.Fprintf(out, "(%.08f = %s%.02f)%s", amount, defaultSymbol, value, extra)
+
+				// Put a terrible sleep here to reduce hammering on public/free APIs
+				time.Sleep(time.Second / 3)
 			}
 		}
 		fmt.Fprint(out, "\n")
