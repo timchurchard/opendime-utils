@@ -15,7 +15,7 @@ import (
 )
 
 // CryptMain entrypoint for the crypt command
-func CryptMain(out io.Writer) int { // todo: This func is super ugly, should refactor
+func CryptMain(out io.Writer) int { // nolint: gocyclo // todo: This func is super ugly, should refactor
 	const (
 		defaultEmpty    = ""
 		usageVerbose    = "Verbose mode"
