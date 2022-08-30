@@ -94,6 +94,10 @@ func SigtoaddrMain(out io.Writer) int {
 		return 1
 	}
 
+	if verbose {
+		fmt.Fprintf(out, "Public key hex: %s\n", verifiedMessage.PublicKeyHex)
+	}
+
 	addresses, err = pkg.GetAddresses(verifiedMessage)
 	if err != nil {
 		fmt.Fprintf(out, "Failed to make addresses: %v", err)
