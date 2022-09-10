@@ -35,6 +35,7 @@ func TestGetAddresses(t *testing.T) {
 				LitecoinP2PKH:           "LTahWztkF9mCdYe3EBZL9XdchtWYC8LJYm",
 				LitecoinP2PKHCompressed: "LMGoN5WZRVLRra8Vv6uH6EyCs1zDmVPhZV",
 				LitecoinP2WPKH:          "ltc1qzeapyvz7kl7v5vj865rahts2jjcdz0ssqyt28h",
+				DogecoinP2PKH:           "DDVqo3XZTuRRuk8UndZbRGjTNosZNGHQdo",
 				UncompressedHex:         "046afa3afc399f7f332866e37f475938589de0a3298a3aa062c8f4c74450e3d3b287224ee09db6d217912f4706147bb96762d1e11e7ce2e928fd61ecdbd2e37a99",
 				CompressedHex:           "036afa3afc399f7f332866e37f475938589de0a3298a3aa062c8f4c74450e3d3b2",
 			},

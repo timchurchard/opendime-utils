@@ -2,15 +2,17 @@
 
 **Warning! Use at your own risk! I am not responsible for any loss from using this code.**
 
-Utility for making multiple addresses for a sealed [Opendime](https://opendime.com/).
+Utility for making multiple addresses for a sealed [Opendime](https://opendime.com/). Or from any Bitcoin/Litecoin signed message.
 
 Opendime is a USB stick for storing Bitcoin. A private key is made and stored in a secure chip. The Opendime will not reveal the private key until the end-of-life resistor is removed. Opendimes serve as a bearer instrument letting people safely spend Bitcoin like a coin or note.
 
-Also supports Litecoin Opendimes.
+Also supported:
+- Litecoin Opendimes.
+- Encrypt/Decrypt message or file for opendime or any Bitcoin/Litecoin signed message.
 
 ## Premise
 
-It is possible to recover the public key from a Bitcoin/Litecoin signature. And a sealed Opendime can make a signature to prove it controls the private key. Using the public key we are able to derive other addresses such as Bitcoin P2WPKH as well as altcoin addresses such as Litecoin and Ethereum.
+It is possible to recover the public key from a Bitcoin/Litecoin signature. And a sealed Opendime can make a signature to prove it controls the private key. Using the public key we are able to derive other addresses such as Bitcoin P2WPKH as well as altcoin addresses such as Litecoin, Ethereum and Dogecoin.
 
 ## Install
 
@@ -38,6 +40,7 @@ Addresses for Opendime: 1Mmg2eycKHomhjAikEAVehHpCSHTREhLfR
 - Litecoin P2PKH                 LfzdHsHSPx3pxXrsvN9nviMaQeejdnT81s
 - Litecoin P2PKH (Compressed)    LLNYFkeDevK8aPp9BbgDTcnrze6pQc7D6s
 - Litecoin P2WPKH                ltc1qpjtaggfhsnhkcyg967k3jmsxtm5hzg72ymrkmy
+- Dogecoin P2PKH                 DRumZuvFchi4EjMKUpA4CTTR5a1kpHqQXH
 ```
 
 For a full example of sigtoaddr and keyconv [here](sigtoaddr_keyconv_demo.sh)

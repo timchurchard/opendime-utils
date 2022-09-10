@@ -11,6 +11,7 @@ import (
 const (
 	prefixBitcoinHex  = "80"
 	prefixLitecoinHex = "b0"
+	prefixDogecoinHex = "9e"
 )
 
 // KeyconvMain entrypoint for the keyconv command
@@ -37,6 +38,8 @@ func KeyconvMain(out io.Writer, key string) int {
 	fmt.Fprintf(out, "Litecoin P2PKH:\t\t\t%s\n", pkg.ToWif(prefixLitecoinHex, secretExponentHex, false))
 	fmt.Fprintf(out, "Litecoin P2PKH (Compressed):\t%s\n", pkg.ToWif(prefixLitecoinHex, secretExponentHex, true))
 	fmt.Fprintf(out, "Litecoin P2WPKH:\t\tp2wpkh:%s\n\n", pkg.ToWif(prefixLitecoinHex, secretExponentHex, true))
+
+	fmt.Fprintf(out, "Dogecoin P2PKH:\t\t\t%s\n\n", pkg.ToWif(prefixDogecoinHex, secretExponentHex, false))
 
 	fmt.Fprintf(out, "Ethereum:\t\t\t0x%s\n", secretExponentHex)
 
