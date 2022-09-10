@@ -19,6 +19,7 @@ type Addresses struct {
 	LitecoinP2PKH           string
 	LitecoinP2PKHCompressed string
 	LitecoinP2WPKH          string
+	DogecoinP2PKH           string
 	UncompressedHex         string
 	CompressedHex           string
 }
@@ -49,6 +50,8 @@ func GetAddresses(message VerifiedMessage) (Addresses, error) {
 	litecoinP2PKHC, _ := btcutil.NewAddressPubKeyHash(ltcPkHashC, &LitecoinMainNetParams)
 	litecoinP2WPKH, _ := btcutil.NewAddressWitnessPubKeyHash(ltcPkHashC, &LitecoinMainNetParams)
 
+	dogecoinP2PKH, _ := btcutil.NewAddressPubKeyHash(pkHash, &DogecoinMainNetParams)
+
 	return Addresses{
 		Original:                message.Address,
 		BitcoinP2PKH:            bitcoinP2PKH.String(),
@@ -58,6 +61,7 @@ func GetAddresses(message VerifiedMessage) (Addresses, error) {
 		LitecoinP2PKH:           litecoinP2PKH.String(),
 		LitecoinP2PKHCompressed: litecoinP2PKHC.String(),
 		LitecoinP2WPKH:          litecoinP2WPKH.String(),
+		DogecoinP2PKH:           dogecoinP2PKH.String(),
 		UncompressedHex:         hex.EncodeToString(publicKey.SerializeUncompressed()),
 		CompressedHex:           hex.EncodeToString(publicKey.SerializeCompressed()),
 	}, nil

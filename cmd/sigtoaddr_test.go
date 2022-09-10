@@ -16,7 +16,7 @@ func Test_sanityTest(t *testing.T) {
 func Test_SigtoaddrMain(t *testing.T) {
 	const (
 		cliName                 = "sigtoaddr"
-		bitcoinValidExpectedout = "Addresses for Opendime:\t1Nu1QpfegiGmqHS6YZxkaiGpnqAUXvZz2f\n- Bitcoin P2PKH\t\t\t 1GLfgL9yKVTRRG1D4fdKkEuEQqAE7ob1eB \n- Bitcoin P2PKH (Compressed)\t 1Nu1QpfegiGmqHS6YZxkaiGpnqAUXvZz2f \n- Bitcoin P2WPKH\t\t bc1q7qcf63rtp20dsalcwmceucxs0kwn75l95nsxjf \n- Ethereum\t\t\t 0x5D0a9F69035Be4275204f9eBbd5cC049e42429c6 \n- Litecoin P2PKH\t\t LaZcwYToQ9hUg4hNEocd2Fxzd3XWEMFnQ5 \n- Litecoin P2PKH (Compressed)\t Lh7xg2yUmNWq668Fihx3rjLb13XkbHuBMQ \n- Litecoin P2WPKH\t\t ltc1q7qcf63rtp20dsalcwmceucxs0kwn75l9s02z2e \n"
+		bitcoinValidExpectedout = "Addresses for Opendime:\t1Nu1QpfegiGmqHS6YZxkaiGpnqAUXvZz2f\n- Bitcoin P2PKH\t\t\t 1GLfgL9yKVTRRG1D4fdKkEuEQqAE7ob1eB \n- Bitcoin P2PKH (Compressed)\t 1Nu1QpfegiGmqHS6YZxkaiGpnqAUXvZz2f \n- Bitcoin P2WPKH\t\t bc1q7qcf63rtp20dsalcwmceucxs0kwn75l95nsxjf \n- Ethereum\t\t\t 0x5D0a9F69035Be4275204f9eBbd5cC049e42429c6 \n- Litecoin P2PKH\t\t LaZcwYToQ9hUg4hNEocd2Fxzd3XWEMFnQ5 \n- Litecoin P2PKH (Compressed)\t Lh7xg2yUmNWq668Fihx3rjLb13XkbHuBMQ \n- Litecoin P2WPKH\t\t ltc1q7qcf63rtp20dsalcwmceucxs0kwn75l9s02z2e \n- Dogecoin P2PKH\t\t DLUmDb6ccuMhxGBooFctJ14qHxtXVWYf4P \n"
 	)
 
 	// We manipulate the Args to set them up for the testcases, after this test we restore the initial args

@@ -2,7 +2,6 @@ package pkg
 
 import (
 	"encoding/hex"
-	"io/ioutil"
 	"os"
 	"reflect"
 	"testing"
@@ -158,12 +157,12 @@ func TestParseVerifyTxt(t *testing.T) {
 		verifyTxtLtc = "-----BEGIN LITECOIN SIGNED MESSAGE-----\nUNSEALED -- UNSEALED -- UNSEALED\nNonce: 961f7ecaa917101d4241a43a  Serial: PZZUNUKLGRIFCICKJIYDEEIC74\nVersion: 2.3.0 time=20171018.143523 git=master@8fb7cfd coin=LTC\n-----BEGIN SIGNATURE-----\nLhNxvyyxBGv1Z9CKUaYPE5azvFCMnDMbRN\nHAVOlsYZ4/sj1lVHlqeYd4jbxRRkD5zqp6MG6mNKPmfEdE8rwByiQ+aFTuEpXswhV4y5S5dxREq3pkdq4CjU3/A=\n-----END LITECOIN SIGNED MESSAGE-----\n\n\n                                                                    \n                                   \n"
 	)
 
-	btcFp, _ := ioutil.TempFile("", "pvt*")
+	btcFp, _ := os.CreateTemp("", "pvt*")
 	_, _ = btcFp.WriteString(verifyTxtBtc)
 	btcFp.Close()
 	defer os.Remove(btcFp.Name())
 
-	ltcFp, _ := ioutil.TempFile("", "pvt*")
+	ltcFp, _ := os.CreateTemp("", "pvt*")
 	_, _ = ltcFp.WriteString(verifyTxtLtc)
 	ltcFp.Close()
 	defer os.Remove(ltcFp.Name())

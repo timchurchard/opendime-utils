@@ -119,15 +119,15 @@ func sanityTests() int {
 		addresses       pkg.Addresses
 	)
 
-	// Work out the path of the executable to attempt to find verify.txt_tips in root of git repo'
-	ex, err := os.Executable()
+	// Use working directory
+	wd, err := os.Getwd()
 	if err != nil {
 		return 1
 	}
-	exPath := filepath.Dir(ex)
+	wdPath := filepath.Dir(wd)
 
-	btcVerifyTxtFn, _ := filepath.Abs(filepath.Join(exPath, "../../verify.txt_tips"))
-	ltcVerifyTxtFn, _ := filepath.Abs(filepath.Join(exPath, "../../litecoin_verify.txt_tips"))
+	btcVerifyTxtFn, _ := filepath.Abs(filepath.Join(wdPath, "./verify.txt_tips"))
+	ltcVerifyTxtFn, _ := filepath.Abs(filepath.Join(wdPath, "./litecoin_verify.txt_tips"))
 
 	tests := []struct {
 		verifytxt string
@@ -147,6 +147,7 @@ func sanityTests() int {
 				LitecoinP2PKH:           "LaZcwYToQ9hUg4hNEocd2Fxzd3XWEMFnQ5",
 				LitecoinP2PKHCompressed: "Lh7xg2yUmNWq668Fihx3rjLb13XkbHuBMQ",
 				LitecoinP2WPKH:          "ltc1q7qcf63rtp20dsalcwmceucxs0kwn75l9s02z2e",
+				DogecoinP2PKH:           "DLUmDb6ccuMhxGBooFctJ14qHxtXVWYf4P",
 				UncompressedHex:         "0471bb3ef523055565dd5f9864047b9fe93efa10151ff4bb3640f7de6dfdd76cea9d5cb2da17d725a835f25971818e54acc1db69e4866ea23c9dc33f57cb286315",
 				CompressedHex:           "0371bb3ef523055565dd5f9864047b9fe93efa10151ff4bb3640f7de6dfdd76cea",
 			},
@@ -162,6 +163,7 @@ func sanityTests() int {
 				LitecoinP2PKH:           "LfzdHsHSPx3pxXrsvN9nviMaQeejdnT81s",
 				LitecoinP2PKHCompressed: "LLNYFkeDevK8aPp9BbgDTcnrze6pQc7D6s",
 				LitecoinP2WPKH:          "ltc1qpjtaggfhsnhkcyg967k3jmsxtm5hzg72ymrkmy",
+				DogecoinP2PKH:           "DRumZuvFchi4EjMKUpA4CTTR5a1kpHqQXH",
 				UncompressedHex:         "04f27deec87586e475f828cb3cd34d2a02a674c204875e91b90ce4ce1e8773289587979932eef0c5f76c5d5fc692db94749e4efba67b692f564190c4b36ca8763a",
 				CompressedHex:           "02f27deec87586e475f828cb3cd34d2a02a674c204875e91b90ce4ce1e87732895",
 			},
@@ -178,6 +180,7 @@ func sanityTests() int {
 				LitecoinP2PKH:           "LZmzJzpUduz66ipYxLKKmS6hNFh4MgNPKy",
 				LitecoinP2PKHCompressed: "LLsXEU59RyoMmjgCkUAghxTLr6FXoRCgQT",
 				LitecoinP2WPKH:          "ltc1qzgfsnjuz7972nd9jtqh26qc00ltjns3tk3r2wm",
+				DogecoinP2PKH:           "DKh8b3THrfeKNvJzWnKb3BCY3B45ZzCzeH",
 				UncompressedHex:         "04a2e8f5aa9c46242cdc6463adac2ef8e6bb8b17202c06d17c647066ed143535ac1f93e66cc499170185ec79b2ef5c04119282544fea4c8072ff87711e13597bcf",
 				CompressedHex:           "03a2e8f5aa9c46242cdc6463adac2ef8e6bb8b17202c06d17c647066ed143535ac",
 			},
@@ -193,6 +196,7 @@ func sanityTests() int {
 				LitecoinP2PKH:           "LhNxvyyxBGv1Z9CKUaYPE5azvFCMnDMbRN",
 				LitecoinP2PKHCompressed: "LS7a8LTwBzd3Xr717mG2uLgFbvYHQbbJ64",
 				LitecoinP2WPKH:          "ltc1qfwf7s8qrlcjfulqymrrw3mejnwwas9y527wgln",
+				DogecoinP2PKH:           "DTJ7D2cmQ2aEqLgm32YeVpgqbAZP2QHE5i",
 				UncompressedHex:         "04db8b0bc1bf85c9727d31b97fc7483b2d9bbc85d57f7e2ed8f617c98a96966271a41db637664355f9c490abd73b8e68a62afb1d40913fc1384f9edb2475009b89",
 				CompressedHex:           "03db8b0bc1bf85c9727d31b97fc7483b2d9bbc85d57f7e2ed8f617c98a96966271",
 			},
@@ -238,6 +242,7 @@ func prettyPrintAddresses(out io.Writer, addresses pkg.Addresses, balance bool) 
 		"LitecoinP2PKH":           "Litecoin P2PKH\t\t",
 		"LitecoinP2PKHCompressed": "Litecoin P2PKH (Compressed)\t",
 		"LitecoinP2WPKH":          "Litecoin P2WPKH\t\t",
+		"DogecoinP2PKH":           "Dogecoin P2PKH\t\t",
 	}
 
 	fmt.Fprintf(out, "Addresses for Opendime:\t%s\n", addresses.Original)

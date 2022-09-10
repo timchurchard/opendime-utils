@@ -1,8 +1,9 @@
 package pkg
 
 import (
-	"github.com/jarcoal/httpmock"
 	"testing"
+
+	"github.com/jarcoal/httpmock"
 )
 
 func TestCheckBalance(t *testing.T) {
