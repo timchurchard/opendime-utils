@@ -7,6 +7,7 @@ import (
 	"io"
 	"net/http"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -33,11 +34,14 @@ func CheckBalance(address string, fiat string) (float64, float64, string, error)
 		if err != nil {
 			return 0, 0, "", err
 		}
+
 		if ltcMatch {
 			currency = "ltc"
 		} else if strings.HasPrefix(address, "0") {
 			currency = "eth"
 			multiplier = 0.000000000000000001
+		} else if strings.HasPrefix(address, "D") {
+			currency = "doge"
 		} else {
 			return 0, 0, "", errors.New("Unrecognised address. Must be Bitcoin, Litecoin or Ethereum")
 		}
@@ -67,6 +71,12 @@ func CheckBalance(address string, fiat string) (float64, float64, string, error)
 		}
 
 		realPrice, _ = bitlapsGetPrice(currency, fiat, realBalance)
+
+	case "doge":
+		realBalance, realPrice, err = dogechainGetBalanceAndPrice(fiat, address)
+		if err != nil {
+			return 0, 0, "", err
+		}
 	}
 
 	return realBalance, realPrice, extra, nil
@@ -336,6 +346,60 @@ func bitlapsGetPrice(currency, fiat string, balance float64) (float64, error) {
 	realPrice := float64(balance) * price.Data.Last
 
 	return realPrice, nil
+}
+
+func dogechainGetBalanceAndPrice(fiat, address string) (float64, float64, error) {
+	type balanceData struct {
+		Balance string `json:"balance"`
+		Success int
+	}
+
+	type priceData struct {
+		Status string `json:"status"`
+		Data   struct {
+			Network string `json:"network"`
+			Prices  []struct {
+				Price     string `json:"price"`
+				PriceBase string `json:"price_base"`
+				Exchange  string `json:"exchange"`
+				Time      int    `json:"time"`
+			} `json:"prices"`
+		} `json:"data"`
+	}
+
+	balanceBytes, err := httpGet("https://dogechain.info/api/v1/address/balance/" + address)
+	if err != nil {
+		return 0, 0, err
+	}
+
+	balanceBody := balanceData{}
+	err = json.Unmarshal(balanceBytes, &balanceBody)
+	if err != nil {
+		return 0, 0, err
+	}
+
+	balanceFloat, err := strconv.ParseFloat(balanceBody.Balance, 64)
+	if err != nil {
+		return 0, 0, err
+	}
+
+	priceBytes, err := httpGet("https://sochain.com/api/v2/get_price/DOGE/USD")
+	if err != nil {
+		return 0, 0, err
+	}
+
+	priceBody := priceData{}
+	err = json.Unmarshal(priceBytes, &priceBody)
+	if err != nil {
+		return 0, 0, err
+	}
+
+	priceFloat, err := strconv.ParseFloat(priceBody.Data.Prices[0].Price, 64)
+	if err != nil {
+		return 0, 0, err
+	}
+
+	return balanceFloat, priceFloat * balanceFloat, nil
 }
 
 func httpGet(url string) ([]byte, error) {
