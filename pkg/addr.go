@@ -3,9 +3,9 @@ package pkg
 import (
 	"encoding/hex"
 
-	"github.com/btcsuite/btcd/btcec"
+	"github.com/btcsuite/btcd/btcec/v2"
+	"github.com/btcsuite/btcd/btcutil"
 	"github.com/btcsuite/btcd/chaincfg"
-	"github.com/btcsuite/btcutil"
 	"github.com/ethereum/go-ethereum/crypto"
 )
 
@@ -30,7 +30,7 @@ func GetAddresses(message VerifiedMessage) (Addresses, error) {
 	if err != nil {
 		return Addresses{}, err
 	}
-	publicKey, err := btcec.ParsePubKey(publicKeyBytes, btcec.S256())
+	publicKey, err := btcec.ParsePubKey(publicKeyBytes)
 	if err != nil {
 		return Addresses{}, err
 	}
