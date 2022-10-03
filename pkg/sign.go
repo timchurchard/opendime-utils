@@ -11,10 +11,9 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/btcsuite/btcd/wire"
-
-	"github.com/btcsuite/btcd/btcec"
+	"github.com/btcsuite/btcd/btcec/v2/ecdsa"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
+	"github.com/btcsuite/btcd/wire"
 )
 
 // VerifiedMessage struct holds response from ValidateSignature
@@ -81,7 +80,7 @@ func VerifySignature(address string, signature []byte, message []byte) (Verified
 	_ = wire.WriteVarBytes(&buf, 0, message)
 	messageHash := chainhash.DoubleHashB(buf.Bytes())
 
-	publicKey, _, err := btcec.RecoverCompact(btcec.S256(), signature, messageHash)
+	publicKey, _, err := ecdsa.RecoverCompact(signature, messageHash)
 	if err != nil {
 		return VerifiedMessage{}, err
 	}
