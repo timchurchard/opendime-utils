@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/btcsuite/btcd v0.23.2
-	github.com/btcsuite/btcd/btcec/v2 v2.2.1
+	github.com/btcsuite/btcd/btcec/v2 v2.3.0
 	github.com/btcsuite/btcd/btcutil v1.1.2
 	github.com/btcsuite/btcd/chaincfg/chainhash v1.0.1
 	github.com/ecies/go v1.0.1
