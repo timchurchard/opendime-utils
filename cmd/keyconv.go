@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"encoding/hex"
 	"flag"
 	"fmt"
 	"io"
@@ -18,6 +19,12 @@ const (
 func KeyconvMain(out io.Writer, key string) int {
 	verbose := flag.Bool("v", false, "Verbose mode")
 	flag.Parse()
+
+	// Check if key is hex and convert to wif
+	_, err := hex.DecodeString(key)
+	if err == nil {
+		key = pkg.ToWif(prefixBitcoinHex, key, false)
+	}
 
 	mode, secretExponentHex, isCompressed, err := pkg.ValidateWif(key)
 	if err != nil {
