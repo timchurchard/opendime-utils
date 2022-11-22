@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 
+	ecies "github.com/ecies/go"
 	"github.com/timchurchard/opendime-utils/pkg"
 )
 
@@ -17,6 +18,8 @@ const (
 
 // KeyconvMain entrypoint for the keyconv command
 func KeyconvMain(out io.Writer, key string) int {
+	balance := flag.Bool("b", false, "Show balances")
+	makeAddrs := flag.Bool("a", false, "Make addresses")
 	verbose := flag.Bool("v", false, "Verbose mode")
 	flag.Parse()
 
@@ -49,6 +52,27 @@ func KeyconvMain(out io.Writer, key string) int {
 	fmt.Fprintf(out, "Dogecoin P2PKH:\t\t\t%s\n\n", pkg.ToWif(prefixDogecoinHex, secretExponentHex, false))
 
 	fmt.Fprintf(out, "Ethereum:\t\t\t0x%s\n", secretExponentHex)
+
+	if *makeAddrs {
+		privKey, err := ecies.NewPrivateKeyFromHex(secretExponentHex)
+		if err != nil {
+			fmt.Fprintf(out, "Failed to make private key: %v", err)
+			return 1
+		}
+
+		verifiedMessage := pkg.VerifiedMessage{
+			Address:      "TODO",
+			PublicKeyHex: privKey.PublicKey.Hex(false),
+		}
+
+		addresses, err := pkg.GetAddresses(verifiedMessage)
+		if err != nil {
+			fmt.Fprintf(out, "Failed to make addresses: %v", err)
+			return 1
+		}
+
+		prettyPrintAddresses(out, addresses, *balance)
+	}
 
 	return 0
 }
