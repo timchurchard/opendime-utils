@@ -27,7 +27,7 @@ func main() {
 	case "keyconv":
 		var key string
 
-		fmt.Printf("Private Key WIF: ")
+		fmt.Printf("Private Key WIF or hex: ")
 		fmt.Scanln(&key)
 		key = strings.TrimSpace(key)
 
