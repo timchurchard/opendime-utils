@@ -115,6 +115,8 @@ func mempoolGetBitcoinBalance(address string, multiplier float64) (float64, erro
 
 	realBalance := float64(balance.ChainStats.FundedTxoSum) * multiplier
 	realBalance += float64(balance.MempoolStats.FundedTxoSum) * multiplier
+	realBalance -= float64(balance.ChainStats.SpentTxoSum) * multiplier
+	realBalance -= float64(balance.MempoolStats.SpentTxoSum) * multiplier
 
 	return realBalance, nil
 }
