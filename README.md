@@ -46,3 +46,7 @@ Addresses for Opendime: 1Mmg2eycKHomhjAikEAVehHpCSHTREhLfR
 For a full example of sigtoaddr and keyconv [here](sigtoaddr_keyconv_demo.sh)
 
 For an example of crypt see [crypt_demo.sh](crypt_demo.sh)
+
+## Encryption with ECIES
+
+**WARNING** Version 0.1.x used ECIES v1 which is incompatible with ECIES v2 in the 0.2.x releases. If you need to decrypt a v1 encrypted message you will need to use a v1 release.

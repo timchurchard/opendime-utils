@@ -9,7 +9,7 @@ import (
 	"os"
 	"time"
 
-	ecies "github.com/ecies/go"
+	ecies "github.com/ecies/go/v2"
 
 	"github.com/timchurchard/opendime-utils/pkg"
 )
