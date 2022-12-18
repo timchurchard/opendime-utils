@@ -9,7 +9,7 @@
 #BEWs+6LFlRxUQQ4X9kuPp03L3C+qttMjliLWVExapsDQdjaFfV/7sPxHbhVDPeZ2upYx99TzK0TufWEupSUAXC7s69dbdqUTiTYZOkfKRahrpJNmTffwbmgIO+lI8qNk/SBXVR/CNu+toq/H+5KqJ6njeqaNZX8=
 
 # Decrypt the message produced before using private key starting L165
-./opendime-utils crypt -i "BEWs+6LFlRxUQQ4X9kuPp03L3C+qttMjliLWVExapsDQdjaFfV/7sPxHbhVDPeZ2upYx99TzK0TufWEupSUAXC7s69dbdqUTiTYZOkfKRahrpJNmTffwbmgIO+lI8qNk/SBXVR/CNu+toq/H+5KqJ6njeqaNZX8=" -k L165TWkVszAp4yHkFsVRj8udU6w2UxfvVMk8bs9QZZyzNmwWVprK -d -o
+./opendime-utils crypt -i "BOp4Wm0IOeERi79xA37tj5WoPUqVtvC8xYpkZ+kX1tndoHsG4iWnFa66YvfwB5wJzBB2M47nNEyawh1kRxc+6WqRvvYDASSQcJTDDacRE3nK/pFkOHxp1Uv5na8lA97MsBlFTaijBipVERM85VzKQWIBzQHoEac=" -k L165TWkVszAp4yHkFsVRj8udU6w2UxfvVMk8bs9QZZyzNmwWVprK -d -o
 #Decrypted message
 #Test Message for crypt
 
