@@ -43,7 +43,7 @@ func Test_CryptMain(t *testing.T) {
 			name: "valid encrypt",
 			args: []string{
 				"-i",
-				"BEWs+6LFlRxUQQ4X9kuPp03L3C+qttMjliLWVExapsDQdjaFfV/7sPxHbhVDPeZ2upYx99TzK0TufWEupSUAXC7s69dbdqUTiTYZOkfKRahrpJNmTffwbmgIO+lI8qNk/SBXVR/CNu+toq/H+5KqJ6njeqaNZX8=",
+				"BFHzllfvzCZbKFXMnTUKitlPlAqiuKXEvs2PopPKx205bZS0GHdvmUaAG2p0R9aBJ3rSiHXrmG4DY7SZS3BKuRyj8Udv2thl/zdAkbuNjs1q98i6FPHLIkAsOaTveAH8cFsFlcwEAZIeA9ExqdpoNhyIU01yS0E=",
 				"-k",
 				"L165TWkVszAp4yHkFsVRj8udU6w2UxfvVMk8bs9QZZyzNmwWVprK",
 				"-d",
