@@ -19,7 +19,9 @@
 # Note! keyconv requires interactive input of the private key WIF not cli args
 # Note! Options -v for verbose -a to make addresses and -b to check balance
 # Note! Supports private key as wif or hex
-./opendime-utils keyconv
+echo
+echo "Use private key: L165TWkVszAp4yHkFsVRj8udU6w2UxfvVMk8bs9QZZyzNmwWVprK"
+./opendime-utils keyconv -a
 #Private Key WIF: L165TWkVszAp4yHkFsVRj8udU6w2UxfvVMk8bs9QZZyzNmwWVprK
 #Original WIF: Bitcoin L165TWkVszAp4yHkFsVRj8udU6w2UxfvVMk8bs9QZZyzNmwWVprK compressed=true
 #
