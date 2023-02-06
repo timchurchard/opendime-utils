@@ -385,21 +385,7 @@ func dogechainGetBalanceAndPrice(fiat, address string) (float64, float64, error)
 		return 0, 0, err
 	}
 
-	priceBytes, err := httpGet("https://sochain.com/api/v2/get_price/DOGE/USD")
-	if err != nil {
-		return 0, 0, err
-	}
-
-	priceBody := priceData{}
-	err = json.Unmarshal(priceBytes, &priceBody)
-	if err != nil {
-		return 0, 0, err
-	}
-
-	priceFloat, err := strconv.ParseFloat(priceBody.Data.Prices[0].Price, 64)
-	if err != nil {
-		return 0, 0, err
-	}
+	priceFloat := 0.0 // TODO! Need API for dogecoin price
 
 	return balanceFloat, priceFloat * balanceFloat, nil
 }
