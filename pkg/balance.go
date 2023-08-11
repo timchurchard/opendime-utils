@@ -356,19 +356,6 @@ func dogechainGetBalanceAndPrice(fiat, address string) (float64, float64, error)
 		Success int
 	}
 
-	type priceData struct {
-		Status string `json:"status"`
-		Data   struct {
-			Network string `json:"network"`
-			Prices  []struct {
-				Price     string `json:"price"`
-				PriceBase string `json:"price_base"`
-				Exchange  string `json:"exchange"`
-				Time      int    `json:"time"`
-			} `json:"prices"`
-		} `json:"data"`
-	}
-
 	balanceBytes, err := httpGet("https://dogechain.info/api/v1/address/balance/" + address)
 	if err != nil {
 		return 0, 0, err
