@@ -1,5 +1,11 @@
 # opendime-utils
 
+![Build Status](https://github.com/timchurchard/opendime-utils/workflows/Test/badge.svg)
+![Coverage](https://img.shields.io/badge/Coverage-67.3%25-yellow)
+[![License](https://img.shields.io/github/license/timchurchard/opendime-utils)](/LICENSE)
+[![Release](https://img.shields.io/github/release/timchurchard/opendime-utils.svg)](https://github.com/timchurchard/opendime-utils/releases/latest)
+[![GitHub Releases Stats of opendime-utils](https://img.shields.io/github/downloads/timchurchard/opendime-utils/total.svg?logo=github)](https://somsubhra.github.io/github-release-stats/?username=timchurchard&repository=opendime-utils)
+
 **Warning! Use at your own risk! I am not responsible for any loss from using this code.**
 
 Utility for making multiple addresses for a sealed [Opendime](https://opendime.com/). Or from any Bitcoin/Litecoin signed message.
@@ -19,7 +25,7 @@ It is possible to recover the public key from a Bitcoin/Litecoin signature. And 
 Install the latest from source using the `go install` command
 
 ```shell
-go install github.com/timchurchard/opendime-utils
+go install github.com/timchurchard/opendime-utils@latest
 ```
 
 ## Usage
