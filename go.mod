@@ -9,7 +9,7 @@ require (
 	github.com/btcsuite/btcd/chaincfg/chainhash v1.0.2
 	github.com/ecies/go/v2 v2.0.7
 	github.com/ethereum/go-ethereum v1.12.2
-	github.com/jarcoal/httpmock v1.3.0
+	github.com/jarcoal/httpmock v1.3.1
 )
 
 require (
