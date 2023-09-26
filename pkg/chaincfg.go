@@ -6,8 +6,8 @@ import (
 	"github.com/btcsuite/btcd/chaincfg"
 )
 
-// LitecoinMainNetParams defines the network parameters for the main Litecoin network.
-var LitecoinMainNetParams = chaincfg.Params{
+// litecoinMainNetParams defines the network parameters for the main Litecoin network.
+var litecoinMainNetParams = chaincfg.Params{
 	Name:        "mainnet",
 	Net:         wire.MainNet,
 	DefaultPort: "9333",
@@ -32,8 +32,8 @@ var LitecoinMainNetParams = chaincfg.Params{
 	HDCoinType: 2,
 }
 
-// DogecoinMainNetParams defines the network parameters for the main Dogecoin network.
-var DogecoinMainNetParams = chaincfg.Params{
+// dogecoinMainNetParams defines the network parameters for the main Dogecoin network.
+var dogecoinMainNetParams = chaincfg.Params{
 	Name:        "mainnet",
 	Net:         wire.MainNet,
 	DefaultPort: "9333",

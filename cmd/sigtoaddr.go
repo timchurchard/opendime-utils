@@ -10,6 +10,7 @@ import (
 	"reflect"
 	"time"
 
+	"github.com/timchurchard/opendime-utils/internal"
 	"github.com/timchurchard/opendime-utils/pkg"
 )
 
@@ -261,7 +262,7 @@ func prettyPrintAddresses(out io.Writer, addresses pkg.Addresses, balance bool) 
 		fmt.Fprintf(out, "- %s %s ", prefixes[fieldName], address)
 
 		if balance {
-			amount, value, extra, err := pkg.CheckBalance(address, defaultCurrency)
+			amount, value, extra, err := internal.CheckBalance(address, defaultCurrency)
 			if err != nil {
 				// skip price/value print
 			} else {
