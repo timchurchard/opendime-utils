@@ -44,13 +44,13 @@ func GetAddresses(message VerifiedMessage) (Addresses, error) {
 	bitcoinP2WPKH, _ := btcutil.NewAddressWitnessPubKeyHash(pkHashC, &chaincfg.MainNetParams)
 
 	ltcPkHash := btcutil.Hash160(publicKey.SerializeUncompressed())
-	litecoinP2PKH, _ := btcutil.NewAddressPubKeyHash(ltcPkHash, &LitecoinMainNetParams)
+	litecoinP2PKH, _ := btcutil.NewAddressPubKeyHash(ltcPkHash, &litecoinMainNetParams)
 
 	ltcPkHashC := btcutil.Hash160(publicKey.SerializeCompressed())
-	litecoinP2PKHC, _ := btcutil.NewAddressPubKeyHash(ltcPkHashC, &LitecoinMainNetParams)
-	litecoinP2WPKH, _ := btcutil.NewAddressWitnessPubKeyHash(ltcPkHashC, &LitecoinMainNetParams)
+	litecoinP2PKHC, _ := btcutil.NewAddressPubKeyHash(ltcPkHashC, &litecoinMainNetParams)
+	litecoinP2WPKH, _ := btcutil.NewAddressWitnessPubKeyHash(ltcPkHashC, &litecoinMainNetParams)
 
-	dogecoinP2PKH, _ := btcutil.NewAddressPubKeyHash(pkHash, &DogecoinMainNetParams)
+	dogecoinP2PKH, _ := btcutil.NewAddressPubKeyHash(pkHash, &dogecoinMainNetParams)
 
 	return Addresses{
 		Original:                message.Address,
