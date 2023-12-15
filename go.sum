@@ -226,8 +226,8 @@ github.com/dop251/goja v0.0.0-20230806174421-c933cf95e127/go.mod h1:QMWlm50DNe14
 github.com/dop251/goja_nodejs v0.0.0-20210225215109-d91c329300e7/go.mod h1:hn7BA7c8pLvoGndExHudxTDKZ84Pyvv+90pbBjbTz0Y=
 github.com/dop251/goja_nodejs v0.0.0-20211022123610-8dd9abb0616d/go.mod h1:DngW8aVqWbuLRMHItjPUyqdj+HWPvnQe8V8y1nDpIbM=
 github.com/dustin/go-humanize v1.0.0/go.mod h1:HtrtbFcZ19U5GC7JDqmcUSB87Iq5E25KnS6fMYU6eOk=
-github.com/ecies/go/v2 v2.0.8 h1:0tL4KoC57w2WwwG10DiX72sGFi7BGyp/zA5KdUa2UqQ=
-github.com/ecies/go/v2 v2.0.8/go.mod h1:HOVvjxPPx/HilLI8q7JRZ2ZTE4WzQU/RVvhUKPG3RjM=
+github.com/ecies/go/v2 v2.0.9 h1:a64bUt4/Iqx5xNfQhAdItTjHeHq3oAt6nQ1r6Ddmyug=
+github.com/ecies/go/v2 v2.0.9/go.mod h1:HOVvjxPPx/HilLI8q7JRZ2ZTE4WzQU/RVvhUKPG3RjM=
 github.com/eclipse/paho.mqtt.golang v1.2.0/go.mod h1:H9keYFcgq3Qr5OUJm/JZI/i6U7joQ8SYLhZwfeOo6Ts=
 github.com/edsrzf/mmap-go v1.0.0/go.mod h1:YO35OhQPt3KJa3ryjFM5Bs14WD66h8eGKpfaBNrHW5M=
 github.com/eknkc/amber v0.0.0-20171010120322-cdade1c07385/go.mod h1:0vRUJqYpeSZifjYj7uP3BG/gKcuzL9xWVV/Y+cK33KM=
