@@ -8,7 +8,7 @@ require (
 	github.com/btcsuite/btcd/btcutil v1.1.5
 	github.com/btcsuite/btcd/chaincfg/chainhash v1.1.0
 	github.com/ecies/go/v2 v2.0.9
-	github.com/ethereum/go-ethereum v1.13.9
+	github.com/ethereum/go-ethereum v1.13.10
 	github.com/jarcoal/httpmock v1.3.1
 )
 
