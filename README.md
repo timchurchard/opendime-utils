@@ -1,7 +1,7 @@
 # opendime-utils
 
 ![Build Status](https://github.com/timchurchard/opendime-utils/workflows/Test/badge.svg)
-![Coverage](https://img.shields.io/badge/Coverage-67.3%25-yellow)
+![Coverage](https://img.shields.io/badge/Coverage-65.0%25-yellow)
 [![License](https://img.shields.io/github/license/timchurchard/opendime-utils)](/LICENSE)
 [![Release](https://img.shields.io/github/release/timchurchard/opendime-utils.svg)](https://github.com/timchurchard/opendime-utils/releases/latest)
 [![GitHub Releases Stats of opendime-utils](https://img.shields.io/github/downloads/timchurchard/opendime-utils/total.svg?logo=github)](https://somsubhra.github.io/github-release-stats/?username=timchurchard&repository=opendime-utils)
