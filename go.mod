@@ -1,6 +1,7 @@
 module github.com/timchurchard/opendime-utils
 
-go 1.22
+go 1.22.0
+
 toolchain go1.23.3
 
 require (
