@@ -1,7 +1,6 @@
 module github.com/timchurchard/opendime-utils
 
 go 1.22.0
-
 toolchain go1.23.3
 
 require (
@@ -10,7 +9,7 @@ require (
 	github.com/btcsuite/btcd/btcutil v1.1.6
 	github.com/btcsuite/btcd/chaincfg/chainhash v1.1.0
 	github.com/ecies/go/v2 v2.0.10
-	github.com/ethereum/go-ethereum v1.15.2
+	github.com/ethereum/go-ethereum v1.15.5
 	github.com/jarcoal/httpmock v1.3.1
 )
 
