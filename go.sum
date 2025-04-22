@@ -39,8 +39,8 @@ github.com/decred/dcrd/dcrec/secp256k1/v4 v4.4.0/go.mod h1:ZXNYxsqcloTdSy/rNShjY
 github.com/decred/dcrd/lru v1.0.0/go.mod h1:mxKOwFd7lFjN2GZYsiz/ecgqR6kkYAl+0pz0tEMk218=
 github.com/ecies/go/v2 v2.0.11 h1:xYhtMdLiqNi02oLirFmLyNbVXw6250h3WM6zJryQdiM=
 github.com/ecies/go/v2 v2.0.11/go.mod h1:LPRzoefP0Tam+1uesQOq3Gtb6M2OwlFUnXBTtBAKfDQ=
-github.com/ethereum/go-ethereum v1.15.8 h1:H6NilvRXFVoHiXZ3zkuTqKW5XcxjLZniV5UjxJt1GJU=
-github.com/ethereum/go-ethereum v1.15.8/go.mod h1:+S9k+jFzlyVTNcYGvqFhzN/SFhI6vA+aOY4T5tLSPL0=
+github.com/ethereum/go-ethereum v1.15.9 h1:bRra1zi+/q+qyXZ6fylZOrlaF8kDdnlTtzNTmNHfX+g=
+github.com/ethereum/go-ethereum v1.15.9/go.mod h1:+S9k+jFzlyVTNcYGvqFhzN/SFhI6vA+aOY4T5tLSPL0=
 github.com/fsnotify/fsnotify v1.4.7/go.mod h1:jwhsz4b93w/PPRr/qN1Yymfu8t87LnFCMoQvtojpjFo=
 github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4IgpuI1SZQ=
 github.com/golang/protobuf v1.2.0/go.mod h1:6lQm79b+lXiMfvg/cZm0SGofjICqVBUtrP5yJMmIC1U=
