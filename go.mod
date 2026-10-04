@@ -1,6 +1,6 @@
 module github.com/timchurchard/opendime-utils
 
-go 1.25.9
+go 1.25.13
 
 require (
 	github.com/btcsuite/btcd v0.24.2
